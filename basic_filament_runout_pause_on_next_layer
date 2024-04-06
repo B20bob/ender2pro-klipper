@@ -1,0 +1,15 @@
+
+[filament_switch_sensor runout]
+pause_on_runout: False
+switch_pin: pico:gpio16
+runout_gcode:
+  # Pause immediately if we're in PRINT_START
+  {% if printer.print_stats.info.current_layer < 1 %}
+    PAUSE
+  # Pause at the end of the layer if we're anywhere else
+  {% elif printer.print_stats.info.current_layer <=
+            printer.print_stats.info.total_layer and
+          not printer.pause_resume.is_paused %}
+    PAUSE_NEXT_LAYER
+  {% endif %}
+
