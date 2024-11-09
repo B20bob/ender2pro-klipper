@@ -90,3 +90,14 @@ origin = https://github.com/kyleisah/Klipper-Adaptive-Meshing-Purging.git
 managed_services = klipper
 primary_branch = main
 
+[power TriMerc_power]
+type = tplink_smartplug
+address = 192.168.0.54
+initial_state = On
+off_when_shutdown = False
+on_when_job_queued = False
+locked_while_printing = True
+restart_klipper_when_powered = True
+restart_delay = 1.
+bound_services = 
+
